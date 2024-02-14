@@ -1,0 +1,29 @@
+#include <algorithm>
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    std::string largestNumber(std::vector<int>& nums) {
+        if (nums.empty())
+            return "";
+
+        std::vector<std::string> numStrings;
+        for (int num : nums) {
+            numStrings.push_back(std::to_string(num));
+        }
+
+        std::sort(numStrings.begin(), numStrings.end(),
+                  [](const std::string& a, const std::string& b) {
+                      return a + b > b + a;
+                  });
+        if (numStrings[0] == "0")
+            return "0";
+        std::string ans;
+        for (const std::string& str : numStrings) {
+            ans += str;
+        }
+
+        return ans;
+    }
+};

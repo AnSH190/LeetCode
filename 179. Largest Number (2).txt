@@ -1,0 +1,23 @@
+/**
+ * @param {number[]} nums
+ * @return {string}
+ */
+var largestNumber = function (nums) {
+    let largestNumber = "";
+    if (nums.every(num => num === 0)) {
+        largestNumber = "0";
+    }
+
+    else {
+
+    nums.sort((a, b) => {
+        let num1 = a.toString() + b.toString();
+        let num2 = b.toString() + a.toString();
+        return parseInt(num2) - parseInt(num1);
+    });
+
+
+        largestNumber = nums.join("");
+    }
+    return largestNumber;
+};
