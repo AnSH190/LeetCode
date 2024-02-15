@@ -1,0 +1,27 @@
+#include <vector>
+#include <algorithm>
+
+class Solution {
+public:
+    int missingNumber(std::vector<int>& nums) {
+        int ans = 0;
+        
+        if(nums.empty()) {
+            return 0; // If the array is empty, 0 is the missing number.
+        }
+        
+        std::sort(nums.begin(), nums.end());
+        for(int i = 0; i < nums.size() - 1; i++) {
+            if(nums[i] + 1 != nums[i+1]) {
+                ans = nums[i] + 1;
+                break;
+            }
+        }
+        // If the loop ends without finding a missing number, the missing number is the last element + 1.
+        if (ans == 0 && nums.back() == nums.size() - 1) {
+            ans = nums.back() + 1;
+        }
+
+        return ans;
+    }
+};

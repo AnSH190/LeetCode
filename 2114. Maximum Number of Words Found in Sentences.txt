@@ -1,0 +1,12 @@
+/**
+ * @param {string[]} sentences
+ * @return {number}
+ */
+var mostWordsFound = function (sentences) {
+    sentences.sort((a, b) => b.split(' ').length - a.split(' ').length);
+
+    let ans = sentences[0].split(' ').length;
+
+    return ans;
+
+};
